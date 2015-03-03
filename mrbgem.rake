@@ -26,9 +26,15 @@ MRuby::Gem::Specification.new('mruby-discount') do |spec|
 
   if ! File.exists? "#{discount_dir}/libmarkdown.a"
     Dir.chdir discount_dir do
-      e = {}
-      run_command e, "CC=#{build.cc.command} sh configure.sh"
-      run_command e, "CC=#{build.cc.command} make"
+      e = {
+        'CC' => "#{spec.build.cc.command} #{spec.build.cc.flags.join(' ')}",
+        'CXX' => "#{spec.build.cxx.command} #{spec.build.cxx.flags.join(' ')}",
+        'LD' => "#{spec.build.linker.command} #{spec.build.linker.flags.join(' ')}",
+        'AR' => spec.build.archiver.command
+      }
+
+      run_command e, "sh configure.sh"
+      run_command e, "make"
     end
   end
 
