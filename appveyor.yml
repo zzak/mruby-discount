@@ -8,7 +8,6 @@ before_build:
   - cd mruby
   - cp "C:/projects/mruby-discount/.appveyor_build_config.rb" "C:/projects/mruby-discount/mruby/build_config.rb"
 build_script:
-  - cd mruby
   - make all test
 notifications:
   - provider: Email
