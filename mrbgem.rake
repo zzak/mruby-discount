@@ -28,7 +28,7 @@ MRuby::Gem::Specification.new('mruby-discount') do |spec|
     Dir.chdir discount_dir do
       e = {}
       run_command e, './configure.sh'
-      run_command e, ENV['CC']
+      run_command e, build.cc.command
     end
   end
 
