@@ -3,12 +3,13 @@ install:
   - cmd: cinst wget -x86
   - cmd: cinst 7zip -x86
   - cmd: cinst mingw
+  - gem install rake
 before_build:
   - git clone https://github.com/mruby/mruby.git
   - cd mruby
   - cp "C:/projects/mruby-discount/.appveyor_build_config.rb" "C:/projects/mruby-discount/mruby/build_config.rb"
 build_script:
-  - make all test
+  - rake test
 notifications:
   - provider: Email
     to: email@zzak.io
