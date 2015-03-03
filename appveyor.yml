@@ -1,4 +1,4 @@
-version: "#{build}"
+version: "{build}"
 install:
   - cmd: cinst wget -x86
   - cmd: cinst 7zip -x86
